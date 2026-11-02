@@ -1,0 +1,13 @@
+# Logical and conditional-style operations
+GENOME "LogicDemo"
+
+STRUCTURE logic {
+    INPUT a : BOOL
+    INPUT b : BOOL
+    LET both = AND(a, b)
+    LET either = OR(a, b)
+    LET exclusive = XOR(a, b)
+    LET negated = NOT(both)
+}
+
+OUTPUT logic

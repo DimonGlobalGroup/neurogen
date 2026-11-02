@@ -1,0 +1,15 @@
+# Motif-based computation
+GENOME "MotifReuse"
+
+MOTIF soft_gate {
+    INPUT x : FLOAT
+    LET gated = SIGMOID(x)
+}
+
+STRUCTURE process {
+    INPUT signal : FLOAT
+    USE soft_gate
+    LET scaled = MULTIPLY(gated, 10.0)
+}
+
+OUTPUT process

@@ -1,0 +1,11 @@
+# Vector and matrix operations
+GENOME "VectorDemo"
+
+STRUCTURE features {
+    INPUT data : VECTOR
+    LET normalized = NORMALIZE(data)
+    LET activated = RELU(normalized)
+    LET reduced = REDUCE(activated)
+}
+
+OUTPUT features

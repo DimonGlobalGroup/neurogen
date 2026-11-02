@@ -1,0 +1,22 @@
+# Classic illustrative program (still supported)
+GENOME "ReasoningStructure"
+
+MEMORY associative
+
+STRUCTURE perception {
+    INPUT sensory_data
+    TRANSFORM patterns
+}
+
+STRUCTURE reasoning {
+    INPUT patterns
+    CONNECT memory
+    EVALUATE relationships
+}
+
+STRUCTURE learning {
+    OBSERVE reasoning
+    ADAPT structure
+}
+
+OUTPUT reasoning

@@ -1,0 +1,26 @@
+# DEMO 1 — Basic three-stage pipeline (FLOAT values)
+GENOME "Demo1Basic"
+
+STRUCTURE stage_a {
+    INPUT x : FLOAT
+    LET y = MULTIPLY(x, 2.0)
+    OUTPUT y
+}
+
+STRUCTURE stage_b {
+    INPUT z : FLOAT
+    LET r = ADD(z, 10.0)
+    OUTPUT r
+}
+
+STRUCTURE stage_c {
+    INPUT q : FLOAT
+    LET s = MULTIPLY(q, 3.0)
+    OUTPUT s
+}
+
+PIPELINE main {
+    CONNECT stage_a.y TO stage_b.z
+    CONNECT stage_b.r TO stage_c.q
+    OUTPUT stage_c.s
+}

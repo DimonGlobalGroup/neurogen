@@ -1,0 +1,16 @@
+# Mathematical computation demonstration
+GENOME "MathDemo"
+
+MEMORY associative
+
+STRUCTURE compute {
+    INPUT x : FLOAT
+    INPUT y : FLOAT
+    CONST two = 2.0
+    LET sum = ADD(x, y)
+    LET doubled = MULTIPLY(sum, two)
+    LET powered = POWER(doubled, 2.0)
+    LET activated = TANH(powered)
+}
+
+OUTPUT compute

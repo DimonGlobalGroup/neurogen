@@ -1,0 +1,17 @@
+GENOME "MotifDemo"
+
+MEMORY associative
+
+MOTIF feature_extractor {
+    INPUT raw
+    TRANSFORM features
+    EVALUATE quality
+}
+
+STRUCTURE pipeline {
+    USE feature_extractor
+    CONNECT memory
+    TRANSFORM decision
+}
+
+OUTPUT pipeline

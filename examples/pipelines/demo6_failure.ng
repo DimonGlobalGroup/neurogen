@@ -1,0 +1,36 @@
+# DEMO 6 — Failure handling: runtime failure in one branch, blocked join,
+# independent branch still completes
+GENOME "Demo6Failure"
+
+STRUCTURE good {
+    INPUT x : FLOAT
+    LET y = MULTIPLY(x, 2.0)
+    OUTPUT y
+}
+
+STRUCTURE bad {
+    INPUT x : FLOAT
+    CONST zero = 0.0
+    LET r = DIVIDE(x, zero)
+    OUTPUT r
+}
+
+STRUCTURE join {
+    INPUT p : FLOAT
+    INPUT q : FLOAT
+    LET r = ADD(p, q)
+    OUTPUT r
+}
+
+STRUCTURE independent {
+    INPUT v : FLOAT
+    LET w = ADD(v, 1000.0)
+    OUTPUT w
+}
+
+PIPELINE main {
+    CONNECT good.y TO join.p
+    CONNECT bad.r TO join.q
+    OUTPUT join.r
+    OUTPUT independent.w
+}

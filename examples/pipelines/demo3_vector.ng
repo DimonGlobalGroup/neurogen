@@ -1,0 +1,27 @@
+# DEMO 3 — Vector processing pipeline: generate -> transform -> evaluate
+GENOME "Demo3Vector"
+
+STRUCTURE generate {
+    LET v = VECTOR(1.0, -2.0, 3.0, -4.0)
+    OUTPUT v
+}
+
+STRUCTURE transform {
+    INPUT t : VECTOR
+    LET n = NORMALIZE(t)
+    LET r = RELU(n)
+    OUTPUT r
+}
+
+STRUCTURE evaluate {
+    INPUT e : VECTOR
+    LET s = REDUCE(e)
+    OUTPUT s
+}
+
+PIPELINE main {
+    CONNECT generate.v TO transform.t
+    CONNECT transform.r TO evaluate.e
+    OUTPUT evaluate.s
+    OUTPUT transform.r
+}

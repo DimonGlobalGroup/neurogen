@@ -1,0 +1,27 @@
+# DEMO 4 — Branching pipeline: one output feeds two downstream structures
+GENOME "Demo4Branch"
+
+STRUCTURE src {
+    INPUT x : FLOAT
+    LET y = ADD(x, 3.0)
+    OUTPUT y
+}
+
+STRUCTURE branch_one {
+    INPUT p : FLOAT
+    LET r = MULTIPLY(p, 10.0)
+    OUTPUT r
+}
+
+STRUCTURE branch_two {
+    INPUT q : FLOAT
+    LET r = ADD(q, 100.0)
+    OUTPUT r
+}
+
+PIPELINE main {
+    CONNECT src.y TO branch_one.p
+    CONNECT src.y TO branch_two.q
+    OUTPUT branch_one.r
+    OUTPUT branch_two.r
+}

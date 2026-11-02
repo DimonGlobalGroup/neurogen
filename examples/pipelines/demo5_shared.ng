@@ -1,0 +1,27 @@
+# DEMO 5 — Shared dependency: two branches share one upstream computation
+GENOME "Demo5Shared"
+
+STRUCTURE root {
+    INPUT x : FLOAT
+    LET y = POWER(x, 2.0)
+    OUTPUT y
+}
+
+STRUCTURE left {
+    INPUT l : FLOAT
+    LET r = ADD(l, 1.0)
+    OUTPUT r
+}
+
+STRUCTURE right {
+    INPUT m : FLOAT
+    LET r = MULTIPLY(m, 2.0)
+    OUTPUT r
+}
+
+PIPELINE main {
+    CONNECT root.y TO left.l
+    CONNECT root.y TO right.m
+    OUTPUT left.r
+    OUTPUT right.r
+}

@@ -1,0 +1,27 @@
+# DEMO 2 — Multiple upstream inputs into one structure
+GENOME "Demo2MultiInput"
+
+STRUCTURE source_left {
+    INPUT a : FLOAT
+    LET p = MULTIPLY(a, 2.0)
+    OUTPUT p
+}
+
+STRUCTURE source_right {
+    INPUT b : FLOAT
+    LET q = ADD(b, 1.0)
+    OUTPUT q
+}
+
+STRUCTURE combiner {
+    INPUT left : FLOAT
+    INPUT right : FLOAT
+    LET total = ADD(left, right)
+    OUTPUT total
+}
+
+PIPELINE main {
+    CONNECT source_left.p TO combiner.left
+    CONNECT source_right.q TO combiner.right
+    OUTPUT combiner.total
+}

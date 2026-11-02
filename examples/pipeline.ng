@@ -1,0 +1,20 @@
+# Multi-stage computational pipeline (motif + sequential ops)
+GENOME "PipelineDemo"
+
+MEMORY associative
+
+MOTIF feature_extract {
+    INPUT raw : VECTOR
+    LET norm = NORMALIZE(raw)
+    LET feats = RELU(norm)
+}
+
+STRUCTURE pipeline {
+    USE feature_extract
+    LET aggregated = AGGREGATE(feats)
+    CONST threshold = 0.1
+    LET decision = GREATER(aggregated, threshold)
+    CONNECT memory
+}
+
+OUTPUT pipeline
