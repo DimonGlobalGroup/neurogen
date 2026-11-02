@@ -2,7 +2,7 @@
 
 **A language-native cognitive architecture: concept graphs, typed pipelines, and reproducible reasoning experiments in Python.**
 
-Blueprint artwork: published with the website edition on the [Dimon Global Group — Systems page](https://mammon-h.github.io/).
+Blueprint artwork: published with the website edition on the [Dimon Global Group — Systems page](https://dimonglobalgroup.github.io/).
 
 NEUROGEN is an AI-native programming language and computational environment.
 Instead of bolting cognition onto a general-purpose language, it treats
